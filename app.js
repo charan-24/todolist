@@ -7,11 +7,13 @@ const _ = require('lodash');
 
 const app = express();
 
+const MONGO_URI="mongodb+srv://admin-bumblebee:bumblebee123@cluster0.ry9t6rp.mongodb.net/todolistDB";
+
 app.set('view engine', 'ejs');
 
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static("public"));
-mongoose.connect("process.env.mongodb+srv://admin-bumblebee:bumblebee123@cluster0.ry9t6rp.mongodb.net/todolistDB", { useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connect(process.env.MONGO_URI, { useNewUrlParser: true, useUnifiedTopology: true });
 
 const itemsSchema = new mongoose.Schema({
   name:String
