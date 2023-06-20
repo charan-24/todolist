@@ -1,5 +1,5 @@
 //jshint esversion:6
-
+require('dotenv').config()
 const express = require("express");
 const bodyParser = require("body-parser");
 const mongoose =require('mongoose');
@@ -7,7 +7,6 @@ const _ = require('lodash');
 
 const app = express();
 
-const MONGO_URI="mongodb+srv://admin-bumblebee:bumblebee123@cluster0.ry9t6rp.mongodb.net/todolistDB";
 
 app.set('view engine', 'ejs');
 
@@ -54,10 +53,8 @@ app.get("/", function(req, res) {
           .then(()=>{console.log("Inserted")})
           .catch((err)=>{console.log(err)});
           res.redirect('/');
-        }
-        
+        }        
       });
-
 });
 
 app.post("/", function(req, res){
